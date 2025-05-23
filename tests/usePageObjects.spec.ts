@@ -30,8 +30,7 @@ test('parametrized methods',
 
     await pm.navigateTo().formLayoutPage()
     await pm.onFormLayoutPage().submitUsingTheGridFormUsingCredentialsAndSelectOption(process.env.USER, process.env.PASSWORD, 'Option 2')
-
-    await page.screenshot({path: 'screenshots/formLayoutPage.png'})
+    //await page.screenshot({path: 'screenshots/formLayoutPage.png'})
     //const buffer = await page.screenshot() //create binary for screenshot
 
     await pm.onFormLayoutPage().submitInlineFormWithNameEmailAndChackbox(randomFullName, randomEmail, false)
