@@ -36,6 +36,15 @@ export default defineConfig<TestOptions>({
     // allure generate ./allure-results -o ./allure-report --clean //- comand for generating report after the run
     //allure open ./allure-report //command for open allure report
     //['allure-playwright']
+    process.env.CI ? ["dot"] : ["list"],
+    // Add Argos reporter.
+    [
+      "@argos-ci/playwright/reporter",
+      {
+        // Upload to Argos on CI only.
+        uploadToArgos: !!process.env.CI,
+      },
+    ],
     ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -48,6 +57,7 @@ export default defineConfig<TestOptions>({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+    screenshot: "only-on-failure",
     //actionTimeout: 5000,
     //navigationTimeout: 5000,
     // video: {
