@@ -15,9 +15,9 @@ dotenv.config({ path: path.resolve(__dirname, '.env') });
 export default defineConfig<TestOptions>({
   //timeout: 15000,
   //globalTimeout: 60000,
-  expect:{
-  //   timeout: 2000,
-  toHaveScreenshot: {maxDiffPixels:50}
+  expect: {
+    //   timeout: 2000,
+    toHaveScreenshot: { maxDiffPixels: 50 }
   },
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -45,15 +45,15 @@ export default defineConfig<TestOptions>({
         uploadToArgos: !!process.env.CI,
       },
     ],
-    ],
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     //baseURL: 'http://localhost:4200',
     globalsQAUrl: 'https://www.globalsqa.com/demo-site/draganddrop/',
     baseURL: process.env.DEV === '1' ? 'http://localhost:4201'
-          :  process.env.STAGING === '1' ? 'http://localhost:4202'
-          : 'http://localhost:4200',
+      : process.env.STAGING === '1' ? 'http://localhost:4202'
+        : 'http://localhost:4200',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
@@ -70,14 +70,14 @@ export default defineConfig<TestOptions>({
     {
       name: 'dev',
       use: {
-         ...devices['Desktop Chrome'],
+        ...devices['Desktop Chrome'],
         //baseURL: 'http://localhost:4200'
       },
     },
     {
       name: 'staging',
       use: {
-         ...devices['Desktop Chrome'],
+        ...devices['Desktop Chrome'],
         //baseURL: 'http://localhost:4200'
       },
     },
@@ -100,17 +100,17 @@ export default defineConfig<TestOptions>({
       name: 'pageObjectFullScreen',
       testMatch: 'usePageObjects.spec.ts',
       use: {
-        viewport: {width: 1920, height: 1080}
+        viewport: { width: 1920, height: 1080 }
       }
     },
     {
       name: 'mobile',
       testMatch: 'testMobile.spec.ts',
       use: {
-         ...devices['iPhone 15 Pro'],
+        ...devices['iPhone 15 Pro'],
         //viewport: {width: 414, height: 800}
       }
-    }    
+    }
 
     /* Test against mobile viewports. */
     // {

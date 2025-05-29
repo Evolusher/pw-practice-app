@@ -3,15 +3,15 @@ import { NavigationPage } from "../page-objects/navigationPage"
 import { FormLayoutPage } from "../page-objects/formLayoutPage"
 import { DatepickerPage } from "../page-objects/datepickerpage"
 
-export class PageManager{
-    
+export class PageManager {
+
     private readonly page: Page
     private readonly navigationPage: NavigationPage
     private readonly formLayoutPage: FormLayoutPage
     private readonly datepickerPage: DatepickerPage
 
 
-    constructor(page: Page){
+    constructor(page: Page) {
         this.page = page
         this.navigationPage = new NavigationPage(this.page)
         this.formLayoutPage = new FormLayoutPage(this.page)
@@ -19,15 +19,15 @@ export class PageManager{
 
     }
 
-    navigateTo(){
+    navigateTo() {
         return this.navigationPage
     }
 
-    onFormLayoutPage(){
+    onFormLayoutPage() {
         return this.formLayoutPage
     }
 
-    onDatepickerPage(){
+    onDatepickerPage() {
         return this.datepickerPage
     }
 }
